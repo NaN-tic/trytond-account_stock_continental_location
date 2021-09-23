@@ -1,0 +1,23 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:product.category,location_accounts:"
+msgid "Location Accounts"
+msgstr "Ubicación Cuentas"
+
+msgctxt "field:product.category-stock.location-account.account,account:"
+msgid "Account"
+msgstr "Cuenta"
+
+msgctxt "field:product.category-stock.location-account.account,category:"
+msgid "Category"
+msgstr "Categoría"
+
+msgctxt "field:product.category-stock.location-account.account,location:"
+msgid "Location"
+msgstr "Ubicación"
+
+msgctxt "model:product.category-stock.location-account.account,name:"
+msgid "Category - Location - Account"
+msgstr "Categoría - Ubicación - Cuenta"
