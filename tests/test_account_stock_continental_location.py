@@ -17,8 +17,8 @@ class AccountStockContinentalLocationTestCase(ModuleTestCase):
 
 def suite():
     suite = test_suite()
-    # suite.addTests(unittest.TestLoader().loadTestsFromTestCase(
-    #         AccountStockContinentalLocationTestCase))
+    suite.addTests(unittest.TestLoader().loadTestsFromTestCase(
+            AccountStockContinentalLocationTestCase))
     suite.addTests(doctest.DocFileSuite(
         'scenario_account_stock_continental_location.rst',
         tearDown=doctest_teardown, encoding='utf-8',

@@ -166,7 +166,7 @@ Create stock moves::
     >>> move = StockMove()
     >>> from_location = Location.find([('type', '=', 'storage')])[0]
     >>> move.from_location = from_location
-    >>> move.to_location = elimination
+    >>> move.to_location = elimination_location
     >>> move.quantity = 2
     >>> move.product = product
     >>> move.save()
