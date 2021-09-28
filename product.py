@@ -27,15 +27,13 @@ class CategoryLocationAccount(ModelSQL, ModelView):
     location = fields.Many2One('stock.location', 'Location', required=True,
         ondelete='CASCADE',
         domain=[
-            ('type', '!=', 'view'),
-            ('type', '!=', 'storage'),
-            ('type', '!=', 'warehouse')
+            ('type', 'not in', ['view', 'storage', 'warehouse'])
         ])
     account = fields.Many2One('account.account', 'Account', required=True,
         ondelete='CASCADE',
         domain=[
             ('type', '!=', None),
-            ('closed', '!=', True),
+            ('closed', '=', False),
             ('type.stock', '=', True)
             ])
     company = fields.Function(fields.Many2One('company.company', 'Company'),
