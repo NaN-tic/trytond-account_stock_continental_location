@@ -50,10 +50,10 @@ Create chart of accounts::
     >>> revenue = accounts['revenue']
     >>> expense = accounts['expense']
     >>> stock = accounts['stock']
-    >>> stock_customer = accounts['stock_customer']
-    >>> stock_lost_found = accounts['stock_lost_found']
-    >>> stock_production = accounts['stock_production']
-    >>> stock_supplier = accounts['stock_supplier']
+    >>> stock_in = accounts['stock_expense']
+    >>> stock_out, = stock_in.duplicate()
+    >>> stock_production, = stock_in.duplicate()
+    >>> stock_lost_found, = stock_in.duplicate()
 
 Create parties::
 
@@ -71,10 +71,8 @@ Create product category::
     >>> account_category.account_expense = expense
     >>> account_category.account_revenue = revenue
     >>> account_category.account_stock = stock
-    >>> account_category.account_stock_supplier = stock_supplier
-    >>> account_category.account_stock_customer = stock_customer
-    >>> account_category.account_stock_production = stock_production
-    >>> account_category.account_stock_lost_found = stock_lost_found
+    >>> account_category.account_stock_in = stock_in
+    >>> account_category.account_stock_out = stock_out
     >>> account_category.save()
 
     >>> Location = Model.get('stock.location')
@@ -149,10 +147,10 @@ Receive 5 products::
     >>> shipment.click('done')
     >>> shipment.state
     'done'
-    >>> stock_supplier.reload()
-    >>> stock_supplier.debit
+    >>> stock_in.reload()
+    >>> stock_in.debit
     Decimal('0.00')
-    >>> stock_supplier.credit
+    >>> stock_in.credit
     Decimal('25.00')
     >>> stock.reload()
     >>> stock.debit
