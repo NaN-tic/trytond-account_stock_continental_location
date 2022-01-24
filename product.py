@@ -27,7 +27,7 @@ class CategoryLocationAccount(ModelSQL, ModelView):
     location = fields.Many2One('stock.location', 'Location', required=True,
         ondelete='CASCADE',
         domain=[
-            ('type', 'not in', ['view', 'storage', 'warehouse'])
+            ('type', 'not in', ['view', 'warehouse'])
         ])
     account = fields.Many2One('account.account', 'Account', required=True,
         ondelete='CASCADE',
