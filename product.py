@@ -3,6 +3,7 @@
 
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.pool import PoolMeta
+from trytond.pyson import Eval
 
 
 class Category(metaclass=PoolMeta):
@@ -23,7 +24,11 @@ class CategoryLocationAccount(ModelSQL, ModelView):
     __name__ = 'product.category-stock.location-account.account'
 
     category = fields.Many2One('product.category', 'Category', required=True,
-        ondelete='CASCADE')
+        ondelete='CASCADE',
+        context={
+            'company': Eval('company'),
+            },
+        depends=['company'])
     location = fields.Many2One('stock.location', 'Location', required=True,
         ondelete='CASCADE',
         domain=[
