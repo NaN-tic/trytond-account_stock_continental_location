@@ -20,5 +20,18 @@ this repository contains the full copyright notices and license terms. -->
             <field name="type">tree</field>
             <field name="name">category_location_account_list</field>
         </record>
+
+        <record model="ir.rule.group" id="rule_group_product_category_stock_location_account_account">
+            <field name="name">User in company</field>
+            <field name="model" search="[('model', '=', 'product.category-stock.location-account.account')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_product_category_stock_location_account_account">
+            <field name="domain"
+                eval="[('company', 'in', Eval('companies', []))]"
+                pyson="1"/>
+            <field name="rule_group" ref="rule_group_product_category_stock_location_account_account"/>
+        </record>
+
     </data>
 </tryton>
