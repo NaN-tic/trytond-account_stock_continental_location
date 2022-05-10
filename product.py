@@ -42,8 +42,13 @@ class CategoryLocationAccount(ModelSQL, ModelView):
             ('type.stock', '=', True)
             ])
     company = fields.Function(fields.Many2One('company.company', 'Company'),
-        'get_company')
+        'get_company', searcher='search_company')
 
-    def get_company(self):
+    def get_company(self, name=None):
         if self.account:
             return self.account.company
+
+    @classmethod
+    def search_company(cls, name, clause):
+        return [('account.%s' % name,) + tuple(clause[1:])]
+
