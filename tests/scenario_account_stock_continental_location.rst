@@ -175,7 +175,6 @@ Check account moves::
     Decimal('0.00')
     >>> stock_production.debit - stock_production.credit
     Decimal('0.00')
-    >>> move.click('assign')
     >>> move.click('do')
     >>> stock_production.reload()
     >>> stock_lost_found.reload()
