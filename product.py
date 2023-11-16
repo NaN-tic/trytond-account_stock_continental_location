@@ -26,7 +26,7 @@ class CategoryLocationAccount(ModelSQL, ModelView):
     category = fields.Many2One('product.category', 'Category', required=True,
         ondelete='CASCADE',
         context={
-            'company': Eval('company'),
+            'company': Eval('company', -1),
             },
         depends=['company'])
     location = fields.Many2One('stock.location', 'Location', required=True,
