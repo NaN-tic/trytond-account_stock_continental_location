@@ -23,7 +23,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.rule.group" id="rule_group_product_category_stock_location_account_account">
             <field name="name">User in company</field>
-            <field name="model" search="[('model', '=', 'product.category-stock.location-account.account')]"/>
+            <field name="model">product.category-stock.location-account.account</field>
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_product_category_stock_location_account_account">
