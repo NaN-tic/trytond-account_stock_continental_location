@@ -1,6 +1,7 @@
 import datetime
 import unittest
 from decimal import Decimal
+from unittest.mock import patch
 
 from proteus import Model
 from trytond.modules.account.tests.tools import (create_chart,
@@ -11,6 +12,7 @@ from trytond.modules.account_invoice.tests.tools import (
 from trytond.modules.account_stock_continental.tests.tools import \
     add_stock_accounts
 from trytond.modules.company.tests.tools import create_company, get_company
+from trytond.modules.stock.move import Move as StockMoveModel
 from trytond.tests.test_tryton import drop_db
 from trytond.tests.tools import activate_modules
 
@@ -26,6 +28,9 @@ class Test(unittest.TestCase):
         super().tearDown()
 
     def test(self):
+        _ = patch.object(
+            StockMoveModel, 'on_change_with_assignation_required',
+            return_value=False).start()
 
         # Install account_stock_continental, sale and purchase
         activate_modules([
