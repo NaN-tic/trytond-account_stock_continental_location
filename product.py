@@ -13,10 +13,13 @@ class Category(metaclass=PoolMeta):
         'product.category-stock.location-account.account', 'category',
         'Location Account')
 
-    def compute_location_account(self, location):
+    def compute_location_account(self, location, company=None):
         for la in self.location_accounts:
-            if la.location == location:
-                return la.account
+            if la.location != location:
+                continue
+            if company and la.account.company != company:
+                continue
+            return la.account
 
 
 class CategoryLocationAccount(ModelSQL, ModelView):
@@ -51,4 +54,3 @@ class CategoryLocationAccount(ModelSQL, ModelView):
     @classmethod
     def search_company(cls, name, clause):
         return [('account.%s' % name,) + tuple(clause[1:])]
-
