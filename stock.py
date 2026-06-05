@@ -14,7 +14,7 @@ class Move(metaclass=PoolMeta):
         else:
             location = self.to_location
         account = self.product.account_category.compute_location_account(
-            location)
+            location, company=self.company)
         if not account:
             return lines
         for line in lines:
